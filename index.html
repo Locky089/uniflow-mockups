@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniFlow - Осенние активности для здоровья</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo-placeholder">
+                    <span>Logo</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#activities">Активности</a></li>
+                    <li><a href="#life-trainings">Лайф-тренировки</a></li>
+                    <li><a href="#thematic-weeks">Тематические недели</a></li>
+                    <li><a href="#super-series">Супер-серии</a></li>
+                    <li><a href="#club-card">Клубная карта</a></li>
+                </ul>
+                <button class="nav-cta">Присоединиться</button>
+                <button class="mobile-menu-toggle" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <div class="hero-placeholder">
+                        <div class="placeholder-text">Hero Image</div>
+                        <div class="placeholder-dimensions">800×800</div>
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <div class="badge">#Осенние активности</div>
+                    <h1 class="hero-title">Проведите осень с заботой о спине и суставах</h1>
+                    <p class="hero-subtitle">В осеннем сезоне мы подготовили самые приятные активности для здоровья и красоты вашего тела.</p>
+                    <button class="cta-button">Присоединиться</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navCta = document.querySelector('.nav-cta');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            // Toggle mobile menu visibility
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+                navCta.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navCta.style.display = 'block';
+            }
+            
+            // Animate hamburger icon
+            const spans = this.querySelectorAll('span');
+            spans.forEach(span => span.classList.toggle('active'));
+        });
+        
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navMenu.style.display = 'flex';
+                navCta.style.display = 'block';
+                const spans = mobileMenuToggle.querySelectorAll('span');
+                spans.forEach(span => span.classList.remove('active'));
+            } else {
+                navMenu.style.display = 'none';
+                navCta.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
