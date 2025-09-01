@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="styles.css?v=1.9">
 </head>
 <body>
     <header class="header">
@@ -106,10 +106,76 @@
                 <div class="image-block">
                     <div class="image-placeholder">
                         <span>Image Placeholder</span>
-                        <span>Wireframe</span>
-                        <div class="inner-placeholder"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="live-trainings">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Лайф-тренировки</div>
+                <h2 class="section-title">Новые тренировки в живом формате</h2>
+                <p class="section-description">Уникальный формат занятий, где в режиме реального времени вместе с тренером вы выполняете упражнения, а после получаете персональные рекомендации.</p>
+            </div>
+            
+            <div class="slider-container">
+                <button class="slider-nav slider-prev" aria-label="Предыдущий слайд">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <div class="slider-track">
+                    <div class="slide">
+                        <div class="slide-image">
+                            <div class="image-placeholder">
+                                <span>Live Training</span>
+                            </div>
+                        </div>
+                        <h3 class="slide-title">Возвращение гибкости</h3>
+                        <p class="slide-description">На тренировке покажем, как сочетание МФР и растяжки поможет сделать прорыв в работе над гибкостью ног, даже если вам очень тяжело тянуться.</p>
+                    </div>
+                    
+                    <div class="slide">
+                        <div class="slide-image">
+                            <div class="image-placeholder">
+                                <span>Live Training</span>
+                            </div>
+                        </div>
+                        <h3 class="slide-title">Расслабление тела</h3>
+                        <p class="slide-description">Здоровый сон начинается с глубокого расслабления мышц. На тренировке покажем, как МФР-техники и растяжка помогут избавиться от напряжения.</p>
+                    </div>
+                    
+                    <div class="slide">
+                        <div class="slide-image">
+                            <div class="image-placeholder">
+                                <span>Live Training</span>
+                            </div>
+                        </div>
+                        <h3 class="slide-title">Правильное дыхание</h3>
+                        <p class="slide-description">Ключ к идеальному прессу без боли в шее и пояснице — освоение техники правильного, направленного дыхания, которой поделимся на тренировке.</p>
+                    </div>
+                    
+                    <div class="slide">
+                        <div class="slide-image">
+                            <div class="image-placeholder">
+                                <span>Live Training</span>
+                            </div>
+                        </div>
+                        <h3 class="slide-title">Баланс и координация</h3>
+                        <p class="slide-description">Развиваем чувство равновесия и улучшаем координацию движений через специальные упражнения, которые помогут чувствовать себя увереннее в повседневной жизни.</p>
+                    </div>
+                </div>
+                
+                <button class="slider-nav slider-next" aria-label="Следующий слайд">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+
             </div>
         </div>
     </section>
@@ -169,6 +235,61 @@
                 console.log('Selected date:', selectedDateData);
             });
         });
+        
+        // Slider functionality
+        const sliderContainer = document.querySelector('.slider-container');
+        const sliderTrack = document.querySelector('.slider-track');
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.slider-prev');
+        const nextButton = document.querySelector('.slider-next');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        
+        function getSlidesPerView() {
+            return window.innerWidth >= 1024 ? 3 : 1;
+        }
+        
+        function updateSlider() {
+            const slidesPerView = getSlidesPerView();
+            const maxSlide = totalSlides - slidesPerView;
+            const translateX = -(currentSlide * (100 / slidesPerView));
+            
+            sliderTrack.style.transform = `translateX(${translateX}%)`;
+            
+            // Update navigation buttons
+            prevButton.style.opacity = currentSlide === 0 ? '0.5' : '1';
+            nextButton.style.opacity = currentSlide >= maxSlide ? '0.5' : '1';
+        }
+        
+        function nextSlide() {
+            const slidesPerView = getSlidesPerView();
+            const maxSlide = totalSlides - slidesPerView;
+            
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+                updateSlider();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        }
+        
+        // Event listeners
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            updateSlider();
+        });
+        
+        // Initialize slider
+        updateSlider();
     </script>
 </body>
 </html>
