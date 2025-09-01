@@ -52,6 +52,68 @@
         </div>
     </section>
 
+    <section class="accents-season">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Акцент сезона</div>
+                <h2 class="section-title">Деликатная работа над укреплением мышц и устранением скованности</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-block">
+                    <div class="feature-image">
+                        <div class="image-placeholder">
+                            <span>Image Wireframe</span>
+                        </div>
+                    </div>
+                    <h3 class="feature-title">Расслабим спину и избавимся от напряжения в теле</h3>
+                    <p class="feature-description">Сочетание растяжки, пилатеса и миофасциального релиза поможет глубоко проработать мышцы спины и быстро устранить напряжение.</p>
+                </div>
+                <div class="feature-block">
+                    <div class="feature-image">
+                        <div class="image-placeholder">
+                            <span>Image Wireframe</span>
+                        </div>
+                    </div>
+                    <h3 class="feature-title">Укрепим мышцы всего тела с заботой о суставах</h3>
+                    <p class="feature-description">Функциональные упражнения в сочетании с пилатесом помогут вернуть тонус, упругость мышцам бедер, ягодиц и пресса без боли в спине.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="season-activities">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Активности сезона</div>
+                <h2 class="section-title">Гибкость, расслабление, укрепление</h2>
+                <p class="section-description">Комбинация из пилатеса, растяжки и миофасциального релиза позволит деликатно и гармонично проработать все тело в домашних условиях.</p>
+            </div>
+            
+            <div class="date-tabs">
+                <button class="tab-button active" data-date="oct6-12">с 6 по 12 октября</button>
+                <button class="tab-button" data-date="oct20-26">с 20 по 26 октября</button>
+                <button class="tab-button" data-date="nov3-9">с 3 по 9 ноября</button>
+                <button class="tab-button" data-date="nov17-23">с 17 по 23 ноября</button>
+            </div>
+            
+            <div class="content-wrapper">
+                <div class="content-block">
+                    <div class="content-badge" id="content-badge">с 6 по 12 октября</div>
+                    <h3 class="content-title">Гибкость и пластика</h3>
+                    <p class="content-description">Улучшим гибкость во всем теле с самыми плавными зарядками и научимся двигаться пластично, сексуально, свободно.</p>
+                    <button class="content-cta">Присоединиться</button>
+                </div>
+                <div class="image-block">
+                    <div class="image-placeholder">
+                        <span>Image Placeholder</span>
+                        <span>Wireframe</span>
+                        <div class="inner-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Mobile menu functionality
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -84,6 +146,28 @@
                 navMenu.style.display = 'none';
                 navCta.style.display = 'none';
             }
+        });
+        
+        // Date tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const contentBadge = document.getElementById('content-badge');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Update content badge with selected date
+                const selectedDate = this.textContent;
+                contentBadge.textContent = selectedDate;
+                
+                // Here you can add logic to change content based on selected date
+                const selectedDateData = this.getAttribute('data-date');
+                console.log('Selected date:', selectedDateData);
+            });
         });
     </script>
 </body>
