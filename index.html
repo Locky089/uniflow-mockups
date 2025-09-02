@@ -81,7 +81,7 @@
         </div>
     </section>
 
-    <section class="season-activities">
+    <section class="season-activities" id="activities">
         <div class="container">
             <div class="section-header">
                 <div class="badge">Активности сезона</div>
@@ -112,7 +112,7 @@
         </div>
     </section>
 
-    <section class="live-trainings">
+    <section class="live-trainings" id="life-trainings">
         <div class="container">
             <div class="section-header">
                 <div class="badge">Лайф-тренировки</div>
@@ -180,6 +180,106 @@
         </div>
     </section>
 
+    <section class="super-series" id="super-series">
+        <div class="container">
+            <div class="super-series-content">
+                <div class="super-series-image">
+                    <div class="image-placeholder">
+                        <div class="placeholder-text">
+                            <span>Супер-серия</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="super-series-text">
+                    <div class="tags-container">
+                        <span class="tag">супер-серия</span>
+                        <span class="tag">40 минут</span>
+                        <span class="tag">Средний</span>
+                    </div>
+                    <h2 class="super-series-title">Идеальный пресс без боли в спине</h2>
+                    <p class="super-series-description">40-минутная супер-серия для глубокой проработки пресса через сочетание растяжки, пилатеса и функционального тренинга.</p>
+                    <p class="super-series-description">На тренировке сначала уделим внимание мобилизации грудной клетки и тазобедренных суставов, затем проработаем мышцы пресса.</p>
+                    <button class="super-series-cta">Записаться</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="super-series" id="super-series-2">
+        <div class="container">
+            <div class="super-series-content">
+                <div class="super-series-text">
+                    <div class="tags-container">
+                        <span class="tag">супер-серия</span>
+                        <span class="tag">50 минут</span>
+                        <span class="tag">Средний</span>
+                    </div>
+                    <h2 class="super-series-title">Устраняем дискомфорт в спине</h2>
+                    <p class="super-series-description">50-минутная супер-серия, которая поможет избавиться от напряжения в спине через сочетание миофасциального релиза, растяжки и балета.</p>
+                    <p class="super-series-description">Начнем тренировку с глубокого самомассажа спины, затем выполним мобилизирующие техники и закрепим результат балетными упражнениями.</p>
+                    <button class="super-series-cta">Записаться</button>
+                </div>
+                <div class="super-series-image">
+                    <div class="image-placeholder">
+                        <div class="placeholder-text">
+                            <span>Супер-серия</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="super-series" id="super-series-3">
+        <div class="container">
+            <div class="super-series-content">
+                <div class="super-series-image">
+                    <div class="image-placeholder">
+                        <div class="placeholder-text">
+                            <span>Супер-серия</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="super-series-text">
+                    <div class="tags-container">
+                        <span class="tag">супер-серия</span>
+                        <span class="tag">20 минут</span>
+                        <span class="tag">Средний</span>
+                    </div>
+                    <h2 class="super-series-title">Подтянутый трицепс и красивые плечи</h2>
+                    <p class="super-series-description">Короткая 20-минутная, но огненно-прорабатывающая мышцы рук супер-серия с гантелями и эспандером.</p>
+                    <p class="super-series-description">На тренировке используем микс из растяжки и функциональных упражнений с оборудованием и весом своего тела для возвращения тонуса зоне плеч.</p>
+                    <button class="super-series-cta">Записаться</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="super-series" id="super-series-4">
+        <div class="container">
+            <div class="super-series-content">
+                <div class="super-series-text">
+                    <div class="tags-container">
+                        <span class="tag">супер-серия</span>
+                        <span class="tag">35 минут</span>
+                        <span class="tag">Средний</span>
+                    </div>
+                    <h2 class="super-series-title">Гибкость ног и свобода в движениях</h2>
+                    <p class="super-series-description">35-минутная супер-серия для восстановления подвижности в тазобедренных суставах и увеличения гибкости в спине и ногах.</p>
+                    <p class="super-series-description">На тренировке соединим мягкие мобилизирующие техники с динамичными балетными упражнениями на растяжку.</p>
+                    <button class="super-series-cta">Записаться</button>
+                </div>
+                <div class="super-series-image">
+                    <div class="image-placeholder">
+                        <div class="placeholder-text">
+                            <span>Супер-серия</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Mobile menu functionality
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -217,22 +317,50 @@
         // Date tabs functionality
         const tabButtons = document.querySelectorAll('.tab-button');
         const contentBadge = document.getElementById('content-badge');
+        const contentTitle = document.querySelector('.content-title');
+        const contentDescription = document.querySelector('.content-description');
+
+        const contentByDate = {
+            'oct6-12': {
+                title: 'Гибкость и пластика',
+                text: 'Улучшим гибкость во всем теле с самыми плавными зарядками и научимся двигаться пластично, сексуально, свободно.'
+            },
+            'oct20-26': {
+                title: 'Здоровая спина с массажным роллом',
+                text: 'Соединим мфр-зарядки с роллом для спины с комплексами без оборудования, чтобы вернуть легкость и здоровье спины.'
+            },
+            'nov3-9': {
+                title: 'Утро и вечер с зарядкой',
+                text: 'Неделя 2 в 1: выполним бодрящие зарядки для активного начала дня и расслабляющие комплексы для вечернего релакса.'
+            },
+            'nov17-23': {
+                title: 'Идеальные руки и осанка с кольцом',
+                text: 'Создадим королевскую осанку, избавимся от складочек на спине и вернем тонус мышцам рук с помощью пилатес кольца.'
+            }
+        };
+        
+        function applyContent(dateKey, dateLabel) {
+            contentBadge.textContent = dateLabel;
+            const data = contentByDate[dateKey];
+            if (data) {
+                contentTitle.textContent = data.title;
+                contentDescription.textContent = data.text;
+            }
+        }
+        
+        // Initialize with active tab
+        const initialActive = document.querySelector('.tab-button.active');
+        if (initialActive) {
+            applyContent(initialActive.getAttribute('data-date'), initialActive.textContent);
+        }
         
         tabButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // Remove active class from all buttons
                 tabButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
                 this.classList.add('active');
-                
-                // Update content badge with selected date
                 const selectedDate = this.textContent;
-                contentBadge.textContent = selectedDate;
-                
-                // Here you can add logic to change content based on selected date
-                const selectedDateData = this.getAttribute('data-date');
-                console.log('Selected date:', selectedDateData);
+                const selectedDateKey = this.getAttribute('data-date');
+                applyContent(selectedDateKey, selectedDate);
             });
         });
         
@@ -247,7 +375,7 @@
         const totalSlides = slides.length;
         
         function getSlidesPerView() {
-            return window.innerWidth >= 1024 ? 3 : 1;
+            return window.innerWidth >= 1024 ? 2 : 1;
         }
         
         function updateSlider() {

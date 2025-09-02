@@ -1,0 +1,206 @@
+---
+alwaysApply: false
+---
+## Design System Rules for UniFlow mockups
+
+Scope: Static HTML + CSS site using Figma-exported tokens. Follow these rules to keep implementation aligned with design tokens and responsive behavior.
+
+### Token Sources
+- Primary token files live in `design-tokens/`:
+  - `design-tokens.tokens.json` – canonical tokens (colors, typography, spacing, shadows, radii, containers)
+  - `uniflow_variables.json` – currently placeholder
+- CSS variable layer is defined at the top of `styles.css` in `:root`. Treat it as a transformation of Figma tokens into runtime variables.
+
+### Core Variables (CSS)
+- Colors
+  - `--color-white`, `--color-neutral-darkest`, `--color-neutral-darker`, `--color-neutral-dark`, `--color-neutral`, `--color-neutral-light`, `--color-neutral-lighter`, `--color-neutral-lightest`
+- Typography
+  - Font family: `--font-family: 'Roboto', sans-serif`
+  - Font sizes: `--font-size-h1 … --font-size-h6`, `--font-size-text-{large,medium,regular,small,tiny}`
+  - Line heights: `--line-height-*` matching sizes above
+  - Weights: `--font-weight-{light,normal,medium,semibold,bold,extrabold}`
+- Layout
+  - Containers: `--container-{small,medium,large}`
+  - Spacing: `--padding-global`, `--padding-section-{small,medium,large}`
+  - Radii: `--border-radius-{small,medium,large}`
+  - Shadows: `--shadow-{xxsmall,xsmall,small,medium,large}`
+
+Use these variables exclusively in CSS for colors, spacing, and typography. Do not hardcode pixel values that duplicate tokens unless necessary for algorithmic layout.
+
+### Responsive Rules
+- Mobile-first. Breakpoint used: 768px.
+- Per workspace rule: on mobile use single-column layout.
+- Containers: always wrap sections in `.container` (max-width `--container-large`, horizontal padding `--padding-global`).
+- Section vertical spacing: prefer `--padding-section-{medium|large}` depending on prominence.
+
+### Section Patterns
+- Section header pattern
+  - `.section-header` contains optional `.badge`, `.section-title`, `.section-description`.
+  - Badge styling: subtle pill using `--color-neutral-lightest` background and `--color-neutral-dark` text.
+  - Titles use heading tokens (H2/H3 typically). Descriptions use `text-regular` or `text-large`.
+
+- Imagery placeholders
+  - Use dashed border with `--color-neutral-light`, background `--color-neutral-lightest`, rounded by `--border-radius-large`, and `--shadow-small`.
+
+- Buttons
+  - Primary inverse button (dark on light):
+    - Background `--color-neutral-darkest`, text `--color-white`, radius `25px`, hover darken to `--color-neutral-darker`.
+  - Secondary (ghost) button used in super series:
+    - Background `--color-white`, border `1px solid --color-neutral-dark`, hover `--color-neutral-lightest`.
+
+### Existing Components
+- Header/nav: responsive hamburger at <768px. Keep menu items in `.nav-menu`, CTA `.nav-cta`.
+- Hero: two-column on desktop, single column on mobile. Use H1 tokens and `text-large` for subtitle.
+- Accents season: feature cards grid (2 items). Image placeholders follow imagery pattern above.
+- Season activities: tabbed dates with `.tab-button` active styling; content wrapper uses dashed border and grid 1fr/1fr on desktop.
+- Live trainings (slider):
+  - 3 cards per view on desktop (≥1024px), 1 per view on mobile.
+  - Use `.slider-container` with internal padding for nav spacing; `.slider-nav` positioned absolutely with 20px inset.
+  - No pagination dots (removed by requirement). Navigation only via arrows.
+  - Card typography: title uses H5 on desktop, H6 on mobile; body uses `text-regular/small`.
+- Super series block:
+  - Two-column grid: image left, text right; mobile stacks one-column.
+  - Tags are pills as in section badges.
+  - CTA is secondary (outlined) button.
+
+### Accessibility
+- All interactive controls must include `aria-label`s.
+- Maintain color contrast ratio ≥ 4.5:1. Prefer dark text `--color-neutral-darkest` on light backgrounds.
+- Use semantic headings: a single H1 per page, H2 for major sections, H3/H4 for sub-headers.
+
+### Figma ↔ Code Mapping
+- Typography mapping:
+  - H1..H6 -> `--font-size-h*` and `--line-height-h*`, font-weight bold (700) unless specified.
+  - Body text -> `text-{large,medium,regular,small,tiny}` with corresponding line heights.
+- Colors:
+  - Background -> `--color-white`
+  - Text primary -> `--color-neutral-darkest`
+  - Muted text -> `--color-neutral-dark`
+  - Strokes -> `--color-neutral-light`
+- Shadows: choose `{small,medium}` based on elevation; avoid heavier than `large`.
+
+### Authoring Guidelines
+- Always use CSS variables from `:root`; if a token is missing, add it to `:root` mirroring `design-tokens.tokens.json`.
+- Keep selectors flat; avoid deep specificity.
+- Prefer grid/flex for layout, avoid absolute positioning unless necessary.
+- Do not reformat unrelated CSS or change indentation.
+
+### Adding New Sections
+1. Create semantic `<section class="your-section">` wrapped in `.container`.
+2. Reuse `.section-header` pattern when applicable.
+3. Use mobile single-column first; add desktop grid in media queries.
+4. Derive all spacings and font sizes from tokens.
+
+### MCP/Figma Workflow
+- To pull variables: run `#get_variable_defs` with a node selected in Figma (desktop app with MCP).
+- When implementing new designs, extract relevant variables and reflect them in `:root` if missing.
+- If components are mapped via Code Connect, keep file paths consistent and component names stable.
+
+### File Locations
+- Tokens: `design-tokens/`
+- Global CSS and variables: `styles.css`
+- Markup sections: `index.html`
+- Rules: `.cursor/rules/design_system_rules.mdc` (this file)
+
+This ruleset should be the single source of truth for implementing new sections and components in this repository. Keep it updated as tokens or architecture evolve.## Design System Rules for UniFlow mockups
+
+Scope: Static HTML + CSS site using Figma-exported tokens. Follow these rules to keep implementation aligned with design tokens and responsive behavior.
+
+### Token Sources
+- Primary token files live in `design-tokens/`:
+  - `design-tokens.tokens.json` – canonical tokens (colors, typography, spacing, shadows, radii, containers)
+  - `uniflow_variables.json` – currently placeholder
+- CSS variable layer is defined at the top of `styles.css` in `:root`. Treat it as a transformation of Figma tokens into runtime variables.
+
+### Core Variables (CSS)
+- Colors
+  - `--color-white`, `--color-neutral-darkest`, `--color-neutral-darker`, `--color-neutral-dark`, `--color-neutral`, `--color-neutral-light`, `--color-neutral-lighter`, `--color-neutral-lightest`
+- Typography
+  - Font family: `--font-family: 'Roboto', sans-serif`
+  - Font sizes: `--font-size-h1 … --font-size-h6`, `--font-size-text-{large,medium,regular,small,tiny}`
+  - Line heights: `--line-height-*` matching sizes above
+  - Weights: `--font-weight-{light,normal,medium,semibold,bold,extrabold}`
+- Layout
+  - Containers: `--container-{small,medium,large}`
+  - Spacing: `--padding-global`, `--padding-section-{small,medium,large}`
+  - Radii: `--border-radius-{small,medium,large}`
+  - Shadows: `--shadow-{xxsmall,xsmall,small,medium,large}`
+
+Use these variables exclusively in CSS for colors, spacing, and typography. Do not hardcode pixel values that duplicate tokens unless necessary for algorithmic layout.
+
+### Responsive Rules
+- Mobile-first. Breakpoint used: 768px.
+- Per workspace rule: on mobile use single-column layout.
+- Containers: always wrap sections in `.container` (max-width `--container-large`, horizontal padding `--padding-global`).
+- Section vertical spacing: prefer `--padding-section-{medium|large}` depending on prominence.
+
+### Section Patterns
+- Section header pattern
+  - `.section-header` contains optional `.badge`, `.section-title`, `.section-description`.
+  - Badge styling: subtle pill using `--color-neutral-lightest` background and `--color-neutral-dark` text.
+  - Titles use heading tokens (H2/H3 typically). Descriptions use `text-regular` or `text-large`.
+
+- Imagery placeholders
+  - Use dashed border with `--color-neutral-light`, background `--color-neutral-lightest`, rounded by `--border-radius-large`, and `--shadow-small`.
+
+- Buttons
+  - Primary inverse button (dark on light):
+    - Background `--color-neutral-darkest`, text `--color-white`, radius `25px`, hover darken to `--color-neutral-darker`.
+  - Secondary (ghost) button used in super series:
+    - Background `--color-white`, border `1px solid --color-neutral-dark`, hover `--color-neutral-lightest`.
+
+### Existing Components
+- Header/nav: responsive hamburger at <768px. Keep menu items in `.nav-menu`, CTA `.nav-cta`.
+- Hero: two-column on desktop, single column on mobile. Use H1 tokens and `text-large` for subtitle.
+- Accents season: feature cards grid (2 items). Image placeholders follow imagery pattern above.
+- Season activities: tabbed dates with `.tab-button` active styling; content wrapper uses dashed border and grid 1fr/1fr on desktop.
+- Live trainings (slider):
+  - 3 cards per view on desktop (≥1024px), 1 per view on mobile.
+  - Use `.slider-container` with internal padding for nav spacing; `.slider-nav` positioned absolutely with 20px inset.
+  - No pagination dots (removed by requirement). Navigation only via arrows.
+  - Card typography: title uses H5 on desktop, H6 on mobile; body uses `text-regular/small`.
+- Super series block:
+  - Two-column grid: image left, text right; mobile stacks one-column.
+  - Tags are pills as in section badges.
+  - CTA is secondary (outlined) button.
+
+### Accessibility
+- All interactive controls must include `aria-label`s.
+- Maintain color contrast ratio ≥ 4.5:1. Prefer dark text `--color-neutral-darkest` on light backgrounds.
+- Use semantic headings: a single H1 per page, H2 for major sections, H3/H4 for sub-headers.
+
+### Figma ↔ Code Mapping
+- Typography mapping:
+  - H1..H6 -> `--font-size-h*` and `--line-height-h*`, font-weight bold (700) unless specified.
+  - Body text -> `text-{large,medium,regular,small,tiny}` with corresponding line heights.
+- Colors:
+  - Background -> `--color-white`
+  - Text primary -> `--color-neutral-darkest`
+  - Muted text -> `--color-neutral-dark`
+  - Strokes -> `--color-neutral-light`
+- Shadows: choose `{small,medium}` based on elevation; avoid heavier than `large`.
+
+### Authoring Guidelines
+- Always use CSS variables from `:root`; if a token is missing, add it to `:root` mirroring `design-tokens.tokens.json`.
+- Keep selectors flat; avoid deep specificity.
+- Prefer grid/flex for layout, avoid absolute positioning unless necessary.
+- Do not reformat unrelated CSS or change indentation.
+
+### Adding New Sections
+1. Create semantic `<section class="your-section">` wrapped in `.container`.
+2. Reuse `.section-header` pattern when applicable.
+3. Use mobile single-column first; add desktop grid in media queries.
+4. Derive all spacings and font sizes from tokens.
+
+### MCP/Figma Workflow
+- To pull variables: run `#get_variable_defs` with a node selected in Figma (desktop app with MCP).
+- When implementing new designs, extract relevant variables and reflect them in `:root` if missing.
+- If components are mapped via Code Connect, keep file paths consistent and component names stable.
+
+### File Locations
+- Tokens: `design-tokens/`
+- Global CSS and variables: `styles.css`
+- Markup sections: `index.html`
+- Rules: `.cursor/rules/design_system_rules.mdc` (this file)
+
+This ruleset should be the single source of truth for implementing new sections and components in this repository. Keep it updated as tokens or architecture evolve.
