@@ -1412,3 +1412,95 @@ body {
         padding: 4px 10px;
     }
 }
+
+/* FAQ Section */
+.faq {
+    padding: var(--padding-section-large) 0;
+    background-color: var(--color-white);
+}
+
+.faq .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.faq-list {
+    max-width: var(--max-width-xlarge, 1024px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid var(--color-neutral-lighter);
+    border-radius: var(--border-radius-large);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-xxsmall);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: var(--color-neutral-lightest);
+    color: var(--color-neutral-darkest);
+    border: none;
+    padding: 16px 20px;
+    font-size: var(--font-size-text-medium);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    background: var(--color-neutral-lighter);
+}
+
+.faq-icon {
+    color: var(--color-neutral);
+    font-weight: var(--font-weight-bold);
+}
+
+.faq-answer {
+    display: none;
+    padding: 16px 20px 20px;
+    color: var(--color-neutral-dark);
+    font-size: var(--font-size-text-regular);
+    line-height: var(--line-height-text-regular);
+    background-color: var(--color-white);
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.faq-item.open .faq-question .faq-icon {
+    transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+    .faq {
+        padding: var(--padding-section-medium) 0;
+    }
+    .faq-list {
+        padding: 0 var(--padding-global);
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Left-align tab content on desktop */
+    .content-block {
+        align-items: flex-start;
+        text-align: left;
+    }
+    .content-title,
+    .content-description {
+        text-align: left;
+    }
+    .content-cta {
+        align-self: flex-start;
+    }
+}
